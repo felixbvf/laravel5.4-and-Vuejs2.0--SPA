@@ -25,4 +25,5 @@ Vue.component('solicitude', require('./components/Solicitude.vue'));
 const app = new Vue({
     el: '#app',
     router
+
 });
