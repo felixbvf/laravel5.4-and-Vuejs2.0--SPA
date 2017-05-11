@@ -9,8 +9,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div v-if="loading">Loading....</div>
                 <div class="panel panel-default" v-for="notebook in notebooks">
-                        <div class="btn pull-right"><i class="fa fa-pencil"></i></div>
                         <div class="btn pull-right"><i class="fa fa-times"></i></div>
+                        <div @click="editing=true" class="btn pull-right"><i class="fa fa-pencil"></i></div>
                     <form>
                         <div class="panel-heading">
                             <strong v-show="!editing">{{notebook.name}}</strong>
