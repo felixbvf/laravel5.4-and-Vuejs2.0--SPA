@@ -3401,7 +3401,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('home', __webpack_require__(9));
+//Vue.component('home', require('./components/Home.vue'));
 /*Vue.component('inbox', require('./components/Inbox.vue'));
 Vue.component('solicitude', require('./components/Solicitude.vue'));
 Vue.component('create', require('./components/Form.vue'));*/
@@ -4297,9 +4297,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return self.notebooks = response.data; // funciona
             this.loading = true;
         });
-        //axios.get('notebook').then((response) => this.notebooks = response.data; this.loading = false);
-
-        //axios.get('notebook').then((response) => this.notebooks = response.data);
     },
     data: function data() {
         return {
@@ -4500,7 +4497,7 @@ var routes = [{
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    mode: 'history',
+    //mode: 'history',
     routes: routes,
     linkActiveClass: 'active'
 }));
@@ -27165,11 +27162,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        //console.log('Component mounted.')
+        console.log('Component mounted.');
+    },
+    data: function data() {
+        return {
+            notebookData: {
+                name: '',
+                body: ''
+            },
+            errors: {}
+        };
+    },
+
+    methods: {
+        addNotebook: function addNotebook() {
+            var _this = this;
+
+            axios.post('/notebook', this.notebookData).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error.response);
+                _this.errors = error.response.data;
+            });
+        }
     }
 });
 
@@ -27212,26 +27230,46 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('form', [_c('legend', [_vm._v("Crear Notebook")]), _vm._v(" "), _c('div', {
+  }, [_c('form', {
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.addNotebook($event)
+      }
+    }
+  }, [_c('legend', [_vm._v("Crear Notebook")]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
       "for": ""
     }
   }, [_vm._v("Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notebookData.name),
+      expression: "notebookData.name"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
       "id": "",
       "placeholder": "Nombre de Notebook"
+    },
+    domProps: {
+      "value": (_vm.notebookData.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notebookData.name = $event.target.value
+      }
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
@@ -27240,11 +27278,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "for": ""
     }
   }, [_vm._v("Body")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notebookData.body),
+      expression: "notebookData.body"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
       "id": "",
       "placeholder": "Body"
+    },
+    domProps: {
+      "value": (_vm.notebookData.body)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notebookData.body = $event.target.value
+      }
     }
   })]), _vm._v(" "), _c('button', {
     staticClass: "btn btn-primary",
@@ -27252,7 +27305,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "submit"
     }
   }, [_vm._v("Guardar")])])])])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

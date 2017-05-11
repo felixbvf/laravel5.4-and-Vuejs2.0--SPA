@@ -18,7 +18,7 @@ Vue.use(VueRouter);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('home', require('./components/Home.vue'));
+//Vue.component('home', require('./components/Home.vue'));
 /*Vue.component('inbox', require('./components/Inbox.vue'));
 Vue.component('solicitude', require('./components/Solicitude.vue'));
 Vue.component('create', require('./components/Form.vue'));*/

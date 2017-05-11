@@ -34,10 +34,7 @@ import axios from 'axios';
                     return self.notebooks = response.data; // funciona
                     this.loading = true;
 
-            });
-            //axios.get('notebook').then((response) => this.notebooks = response.data; this.loading = false);
-
-            //axios.get('notebook').then((response) => this.notebooks = response.data);
+            });        
         },
         data() {
             return {
