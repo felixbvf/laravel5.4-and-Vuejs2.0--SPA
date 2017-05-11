@@ -4336,7 +4336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateIt: function updateIt(notebookId) {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('notebook' + notebookId, this.notebookEditData).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('notebook/' + notebookId, this.notebookEditData).then(function (response) {
                 console.log(response);
                 _this.editForm = false;
                 _this.notebookEditData = "";
@@ -17432,7 +17432,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('i', {
       staticClass: "fa fa-pencil"
-    })]), _vm._v(" "), _c('form', [_c('div', {
+    })]), _vm._v(" "), _c('form', {
+      on: {
+        "submit": function($event) {
+          $event.preventDefault();
+          _vm.updateIt(notebook.id)
+        }
+      }
+    }, [_c('div', {
       staticClass: "panel-heading"
     }, [_c('strong', {
       directives: [{
@@ -17487,20 +17494,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }, {
         name: "model",
         rawName: "v-model",
-        value: (_vm.notebookEditData.name),
-        expression: "notebookEditData.name"
+        value: (_vm.notebookEditData.body),
+        expression: "notebookEditData.body"
       }],
       staticClass: "form-control",
       attrs: {
         "type": "text"
       },
       domProps: {
-        "value": (_vm.notebookEditData.name)
+        "value": (_vm.notebookEditData.body)
       },
       on: {
         "input": function($event) {
           if ($event.target.composing) { return; }
-          _vm.notebookEditData.name = $event.target.value
+          _vm.notebookEditData.body = $event.target.value
         }
       }
     }), _vm._v("\n                            -by " + _vm._s(notebook.user.name) + "\n                    ")]), _vm._v(" "), _c('button', {

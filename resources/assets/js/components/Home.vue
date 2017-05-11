@@ -11,14 +11,14 @@
                 <div class="panel panel-default" v-for="notebook in notebooks">
                         <div class="btn pull-right"><i class="fa fa-times"></i></div>
                         <div @click="editIt(notebook.id)" class="btn pull-right"><i class="fa fa-pencil"></i></div>
-                    <form>
+                    <form @submit.prevent="updateIt(notebook.id)">
                         <div class="panel-heading">
                             <strong v-show="!showIt(notebook.id)">{{notebook.name}}</strong>
                             <input style="width:250px" v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.name" />
                         </div>
                         <div class="panel-body">
                                 <span v-show="!showIt(notebook.id)">{{notebook.body}}</span>
-                                <input v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.name" />
+                                <input v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.body" />
                                 -by {{notebook.user.name}}
                         </div>
                         <button type="submit" v-show="showIt(notebook.id)">Ok</button>
@@ -71,7 +71,7 @@ import axios from 'axios';
                 return false;
             },
             updateIt(notebookId) {
-                axios.put('notebook' + notebookId, this.notebookEditData)
+                axios.put('notebook/' + notebookId, this.notebookEditData)
                     .then(response => {
                             console.log(response);
                             this.editForm=false;
