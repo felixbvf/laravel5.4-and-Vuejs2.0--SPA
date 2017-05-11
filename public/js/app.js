@@ -17447,6 +17447,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         rawName: "v-show",
         value: (_vm.showIt(notebook.id)),
         expression: "showIt(notebook.id)"
+      }, {
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.notebookEditData.name),
+        expression: "notebookEditData.name"
       }],
       staticClass: "form-control",
       staticStyle: {
@@ -17454,6 +17459,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       attrs: {
         "type": "text"
+      },
+      domProps: {
+        "value": (_vm.notebookEditData.name)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          _vm.notebookEditData.name = $event.target.value
+        }
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "panel-body"
@@ -17470,10 +17484,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         rawName: "v-show",
         value: (_vm.showIt(notebook.id)),
         expression: "showIt(notebook.id)"
+      }, {
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.notebookEditData.name),
+        expression: "notebookEditData.name"
       }],
       staticClass: "form-control",
       attrs: {
         "type": "text"
+      },
+      domProps: {
+        "value": (_vm.notebookEditData.name)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          _vm.notebookEditData.name = $event.target.value
+        }
       }
     }), _vm._v("\n                            -by " + _vm._s(notebook.user.name) + "\n                    ")]), _vm._v(" "), _c('button', {
       directives: [{

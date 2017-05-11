@@ -14,11 +14,11 @@
                     <form>
                         <div class="panel-heading">
                             <strong v-show="!showIt(notebook.id)">{{notebook.name}}</strong>
-                            <input style="width:250px" v-show="showIt(notebook.id)" type="text" class="form-control" />
+                            <input style="width:250px" v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.name" />
                         </div>
                         <div class="panel-body">
                                 <span v-show="!showIt(notebook.id)">{{notebook.body}}</span>
-                                <input v-show="showIt(notebook.id)" type="text" class="form-control" />
+                                <input v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.name" />
                                 -by {{notebook.user.name}}
                         </div>
                         <button type="submit" v-show="showIt(notebook.id)">Ok</button>
