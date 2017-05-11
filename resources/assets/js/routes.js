@@ -11,9 +11,15 @@ let routes=[
     {
         path:'/inbox',
         component:require('./components/Inbox')
+    },
+    {
+        path:'/create',
+        component:require('./components/Form')
     }
 ];
 
 export default new VueRouter({
-        routes
+        mode: 'history',
+        routes,
+        linkActiveClass: 'active'
 });

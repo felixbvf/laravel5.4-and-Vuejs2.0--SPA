@@ -8,7 +8,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MUSERPOL</a>
+          <a class="navbar-brand" href="#"><router-link to="/">
+              MUSERPOL
+          </router-link></a>
 
 
         </div>

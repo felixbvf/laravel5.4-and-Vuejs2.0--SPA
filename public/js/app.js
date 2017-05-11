@@ -3402,8 +3402,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
  */
 
 Vue.component('home', __webpack_require__(9));
-Vue.component('inbox', __webpack_require__(10));
-Vue.component('solicitude', __webpack_require__(11));
+/*Vue.component('inbox', require('./components/Inbox.vue'));
+Vue.component('solicitude', require('./components/Solicitude.vue'));
+Vue.component('create', require('./components/Form.vue'));*/
 
 var app = new Vue({
   el: '#app',
@@ -4286,22 +4287,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         var self = this;
-        this.loading = true;
+        this.loading = false;
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('notebook').then(function (response) {
             return self.notebooks = response.data; // funciona
-            this.loading = false;
+            this.loading = true;
         });
+        //axios.get('notebook').then((response) => this.notebooks = response.data; this.loading = false);
 
         //axios.get('notebook').then((response) => this.notebooks = response.data);
     },
@@ -4498,10 +4494,15 @@ var routes = [{
 }, {
     path: '/inbox',
     component: __webpack_require__(10)
+}, {
+    path: '/create',
+    component: __webpack_require__(55)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: routes
+    mode: 'history',
+    routes: routes,
+    linkActiveClass: 'active'
 }));
 
 /***/ }),
@@ -17417,69 +17418,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.loading) ? _c('div', [_vm._v("Loading....")]) : _vm._e(), _vm._v(" "), _vm._l((_vm.notebooks), function(notebook) {
     return _c('div', {
       staticClass: "panel panel-default"
-    }, [_vm._m(0, true), _vm._v(" "), _c('div', {
-      staticClass: "btn pull-right",
-      on: {
-        "click": function($event) {
-          _vm.editIt(notebook.id)
-        }
-      }
-    }, [_c('i', {
-      staticClass: "fa fa-pencil"
-    })]), _vm._v(" "), _c('form', {
-      on: {
-        "submit": function($event) {
-          $event.preventDefault();
-          _vm.updateIt(notebook.id)
-        }
-      }
     }, [_c('div', {
       staticClass: "panel-heading"
-    }, [_c('strong', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!_vm.showIt(notebook.id)),
-        expression: "!showIt(notebook.id)"
-      }]
-    }, [_vm._v(_vm._s(notebook.name))]), _vm._v(" "), _c('input', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (_vm.showIt(notebook.id)),
-        expression: "showIt(notebook.id)"
-      }, {
-        name: "model",
-        rawName: "v-model",
-        value: (_vm.notebookEditData.name),
-        expression: "notebookEditData.name"
-      }],
-      staticClass: "form-control",
-      staticStyle: {
-        "width": "200px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (_vm.notebookEditData.name)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          _vm.notebookEditData.name = $event.target.value
-        }
-      }
-    })]), _vm._v(" "), _c('div', {
+    }, [_vm._v(_vm._s(notebook.name) + " ")]), _vm._v(" "), _c('div', {
       staticClass: "panel-body"
-    }, [_c('span', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!_vm.showIt(notebook.id)),
-        expression: "!showIt(notebook.id)"
-      }]
-    }, [_vm._v(_vm._s(notebook.body))]), _vm._v(" "), _vm._v("\" class=\"form-control\" v-model=\"notebookEditData.body\">\n                            -by " + _vm._s(notebook.user.name) + "\n                    ")]), _vm._v(" "), _c('button', {
+    }, [_vm._v("\n                            " + _vm._s(notebook.body) + "\n                            -by " + _vm._s(notebook.user.name) + "\n                    ")]), _vm._v(" "), _c('button', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -17502,15 +17445,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.editForm = false
         }
       }
-    }, [_vm._v("Cancel")])])])
+    }, [_vm._v("Cancel")])])
   })], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "btn pull-right"
-  }, [_c('i', {
-    staticClass: "fa fa-times"
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -27191,6 +27128,138 @@ module.exports = g;
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
+
+/***/ }),
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        //console.log('Component mounted.')
+    }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(54),
+  /* template */
+  __webpack_require__(56),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\laragon\\www\\vuejs20\\resources\\assets\\js\\components\\Form.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Form.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-649c358e", Component.options)
+  } else {
+    hotAPI.reload("data-v-649c358e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8 col-md-offset-2"
+  }, [_c('form', [_c('legend', [_vm._v("Crear Notebook")]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Name")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "",
+      "placeholder": "Nombre de Notebook"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Body")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "",
+      "placeholder": "Body"
+    }
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Guardar")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-649c358e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

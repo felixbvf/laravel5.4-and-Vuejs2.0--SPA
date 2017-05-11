@@ -19,8 +19,9 @@ Vue.use(VueRouter);
  */
 
 Vue.component('home', require('./components/Home.vue'));
-Vue.component('inbox', require('./components/Inbox.vue'));
+/*Vue.component('inbox', require('./components/Inbox.vue'));
 Vue.component('solicitude', require('./components/Solicitude.vue'));
+Vue.component('create', require('./components/Form.vue'));*/
 
 const app = new Vue({
     el: '#app',

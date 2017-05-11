@@ -9,17 +9,10 @@
             <div class="col-md-8 col-md-offset-2">
                 <div v-if="loading">Loading....</div>
                 <div class="panel panel-default" v-for="notebook in notebooks">
-                    <div class="btn pull-right"><i class="fa fa-times"></i></div>
-                    <div @click="editIt(notebook.id)" class="btn pull-right"><i class="fa fa-pencil"></i></div>
-                    <form @submit.prevent="updateIt(notebook.id)">
-                        <div class="panel-heading">
-                            <strong v-show="!showIt(notebook.id)">{{notebook.name}}</strong>
-                            <input style="width:200px" v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.name" />
 
-                        </div>
+                        <div class="panel-heading">{{notebook.name}} </div>
                         <div class="panel-body">
-                                <span v-show="!showIt(notebook.id)">{{notebook.body}}</span>
-                                <input v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.body" />
+                                {{notebook.body}}
                                 -by {{notebook.user.name}}
                         </div>
                         <button type="submit" v-show="showIt(notebook.id)">Ok</button>
@@ -36,12 +29,13 @@ import axios from 'axios';
     export default {
         mounted() {
             var self = this;
-            this.loading = true;
+            this.loading = false;
             axios.get('notebook').then(function(response){
                     return self.notebooks = response.data; // funciona
-                    this.loading = false;
+                    this.loading = true;
 
             });
+            //axios.get('notebook').then((response) => this.notebooks = response.data; this.loading = false);
 
             //axios.get('notebook').then((response) => this.notebooks = response.data);
         },
