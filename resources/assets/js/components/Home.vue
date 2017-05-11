@@ -9,15 +9,22 @@
             <div class="col-md-8 col-md-offset-2">
                 <div v-if="loading">Loading....</div>
                 <div class="panel panel-default" v-for="notebook in notebooks">
-
-                        <div class="panel-heading">{{notebook.name}} </div>
+                        <div class="btn pull-right"><i class="fa fa-pencil"></i></div>
+                        <div class="btn pull-right"><i class="fa fa-times"></i></div>
+                    <form>
+                        <div class="panel-heading">
+                            <strong v-show="!editing">{{notebook.name}}</strong>
+                            <input style="width:250px" v-show="editing" type="text" class="form-control" />
+                        </div>
                         <div class="panel-body">
-                                {{notebook.body}}
+                                <span v-show="!editing">{{notebook.body}}</span>
+                                <input v-show="editing" type="text" class="form-control" />
                                 -by {{notebook.user.name}}
                         </div>
                         <button type="submit" v-show="showIt(notebook.id)">Ok</button>
                         <button @click.prevent="editForm=false" v-show="showIt(notebook.id)">Cancel</button>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -34,12 +41,13 @@ import axios from 'axios';
                     return self.notebooks = response.data; // funciona
                     this.loading = true;
 
-            });        
+            });
         },
         data() {
             return {
                 notebooks:[],
                 loading:false,
+                editing:false,
                 editForm:"",
                 notebookEditData:{name:'',body:''}
 

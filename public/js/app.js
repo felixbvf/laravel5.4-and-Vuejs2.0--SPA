@@ -4287,6 +4287,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4302,6 +4309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             notebooks: [],
             loading: false,
+            editing: false,
             editForm: "",
             notebookEditData: { name: '', body: '' }
 
@@ -17415,11 +17423,50 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.loading) ? _c('div', [_vm._v("Loading....")]) : _vm._e(), _vm._v(" "), _vm._l((_vm.notebooks), function(notebook) {
     return _c('div', {
       staticClass: "panel panel-default"
-    }, [_c('div', {
+    }, [_vm._m(0, true), _vm._v(" "), _vm._m(1, true), _vm._v(" "), _c('form', [_c('div', {
       staticClass: "panel-heading"
-    }, [_vm._v(_vm._s(notebook.name) + " ")]), _vm._v(" "), _c('div', {
+    }, [_c('strong', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.editing),
+        expression: "!editing"
+      }]
+    }, [_vm._v(_vm._s(notebook.name))]), _vm._v(" "), _c('input', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (_vm.editing),
+        expression: "editing"
+      }],
+      staticClass: "form-control",
+      staticStyle: {
+        "width": "250px"
+      },
+      attrs: {
+        "type": "text"
+      }
+    })]), _vm._v(" "), _c('div', {
       staticClass: "panel-body"
-    }, [_vm._v("\n                            " + _vm._s(notebook.body) + "\n                            -by " + _vm._s(notebook.user.name) + "\n                    ")]), _vm._v(" "), _c('button', {
+    }, [_c('span', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.editing),
+        expression: "!editing"
+      }]
+    }, [_vm._v(_vm._s(notebook.body))]), _vm._v(" "), _c('input', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (_vm.editing),
+        expression: "editing"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        "type": "text"
+      }
+    }), _vm._v("\n                            -by " + _vm._s(notebook.user.name) + "\n                    ")]), _vm._v(" "), _c('button', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -17442,9 +17489,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.editForm = false
         }
       }
-    }, [_vm._v("Cancel")])])
+    }, [_vm._v("Cancel")])])])
   })], 2)])])
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "btn pull-right"
+  }, [_c('i', {
+    staticClass: "fa fa-pencil"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "btn pull-right"
+  }, [_c('i', {
+    staticClass: "fa fa-times"
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
