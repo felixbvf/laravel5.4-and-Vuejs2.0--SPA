@@ -10,15 +10,15 @@
                 <div v-if="loading">Loading....</div>
                 <div class="panel panel-default" v-for="notebook in notebooks">
                         <div class="btn pull-right"><i class="fa fa-times"></i></div>
-                        <div @click="editing=true" class="btn pull-right"><i class="fa fa-pencil"></i></div>
+                        <div @click="editIt(notebook.id)" class="btn pull-right"><i class="fa fa-pencil"></i></div>
                     <form>
                         <div class="panel-heading">
-                            <strong v-show="!editing">{{notebook.name}}</strong>
-                            <input style="width:250px" v-show="editing" type="text" class="form-control" />
+                            <strong v-show="!showIt(notebook.id)">{{notebook.name}}</strong>
+                            <input style="width:250px" v-show="showIt(notebook.id)" type="text" class="form-control" />
                         </div>
                         <div class="panel-body">
-                                <span v-show="!editing">{{notebook.body}}</span>
-                                <input v-show="editing" type="text" class="form-control" />
+                                <span v-show="!showIt(notebook.id)">{{notebook.body}}</span>
+                                <input v-show="showIt(notebook.id)" type="text" class="form-control" />
                                 -by {{notebook.user.name}}
                         </div>
                         <button type="submit" v-show="showIt(notebook.id)">Ok</button>
@@ -47,7 +47,7 @@ import axios from 'axios';
             return {
                 notebooks:[],
                 loading:false,
-                editing:false,
+                //editing:false,
                 editForm:"",
                 notebookEditData:{name:'',body:''}
 
@@ -55,12 +55,14 @@ import axios from 'axios';
         },
         methods: {
             editIt(notebookId) {
-                this.notebooks.forEach((notebook,i) => {
+                /*this.notebooks.forEach((notebook,i) => {
                     if(notebook.id == notebookId) {
                         this.notebookEditData = notebook;
                     }
                 });
-                return this.editForm=notebookId;
+                return this.editForm=notebookId;*/
+
+                    return this.editForm = notebookId;
             },
             showIt(notebookId) {
                 if(this.editForm == notebookId) {

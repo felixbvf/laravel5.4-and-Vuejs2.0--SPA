@@ -4309,7 +4309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             notebooks: [],
             loading: false,
-            editing: false,
+            //editing:false,
             editForm: "",
             notebookEditData: { name: '', body: '' }
 
@@ -4318,13 +4318,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         editIt: function editIt(notebookId) {
-            var _this = this;
-
-            this.notebooks.forEach(function (notebook, i) {
-                if (notebook.id == notebookId) {
-                    _this.notebookEditData = notebook;
+            /*this.notebooks.forEach((notebook,i) => {
+                if(notebook.id == notebookId) {
+                    this.notebookEditData = notebook;
                 }
             });
+            return this.editForm=notebookId;*/
+
             return this.editForm = notebookId;
         },
         showIt: function showIt(notebookId) {
@@ -4334,13 +4334,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return false;
         },
         updateIt: function updateIt(notebookId) {
-            var _this2 = this;
+            var _this = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('notebook' + notebookId, this.notebookEditData).then(function (response) {
                 console.log(response);
-                _this2.editForm = false;
-                _this2.notebookEditData = "";
-                _this2.$router.push('/');
+                _this.editForm = false;
+                _this.notebookEditData = "";
+                _this.$router.push('/');
             }).catch(function (error) {
                 console.log(error.response);
             });
@@ -17427,7 +17427,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "btn pull-right",
       on: {
         "click": function($event) {
-          _vm.editing = true
+          _vm.editIt(notebook.id)
         }
       }
     }, [_c('i', {
@@ -17438,15 +17438,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       directives: [{
         name: "show",
         rawName: "v-show",
-        value: (!_vm.editing),
-        expression: "!editing"
+        value: (!_vm.showIt(notebook.id)),
+        expression: "!showIt(notebook.id)"
       }]
     }, [_vm._v(_vm._s(notebook.name))]), _vm._v(" "), _c('input', {
       directives: [{
         name: "show",
         rawName: "v-show",
-        value: (_vm.editing),
-        expression: "editing"
+        value: (_vm.showIt(notebook.id)),
+        expression: "showIt(notebook.id)"
       }],
       staticClass: "form-control",
       staticStyle: {
@@ -17461,15 +17461,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       directives: [{
         name: "show",
         rawName: "v-show",
-        value: (!_vm.editing),
-        expression: "!editing"
+        value: (!_vm.showIt(notebook.id)),
+        expression: "!showIt(notebook.id)"
       }]
     }, [_vm._v(_vm._s(notebook.body))]), _vm._v(" "), _c('input', {
       directives: [{
         name: "show",
         rawName: "v-show",
-        value: (_vm.editing),
-        expression: "editing"
+        value: (_vm.showIt(notebook.id)),
+        expression: "showIt(notebook.id)"
       }],
       staticClass: "form-control",
       attrs: {
