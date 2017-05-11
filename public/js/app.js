@@ -27162,6 +27162,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -27182,7 +27183,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.post('/notebook', this.notebookData).then(function (response) {
-                console.log(response);
+                //console.log(response);
+                _this.notebookData = "";
+                _this.errors = "";
+                _this.$router.push('/');
             }).catch(function (error) {
                 console.log(error.response);
                 _this.errors = error.response.data;
@@ -27271,7 +27275,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.notebookData.name = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('span', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.name ? _vm.errors.name[0] : ""))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
@@ -27299,7 +27305,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.notebookData.body = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _c('span', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.body ? _vm.errors.body[0] : ""))])]), _vm._v(" "), _c('button', {
     staticClass: "btn btn-primary",
     attrs: {
       "type": "submit"

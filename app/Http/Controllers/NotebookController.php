@@ -11,7 +11,7 @@ class NotebookController extends Controller
 
     public function index()
     {
-        return Notebook::latest()->with('user')->get();
+        return Notebook::with('user')->orderBy('id','DESC')->get();
     }
 
     public function create()
