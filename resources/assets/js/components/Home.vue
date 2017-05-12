@@ -9,7 +9,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div v-if="loading">Loading....</div>
                 <div class="panel panel-default" v-for="notebook in notebooks">
-                        <div class="btn pull-right"><i class="fa fa-times"></i></div>
+                        <div @click="deleteIt(notebook.id)" class="btn pull-right"><i class="fa fa-times"></i></div>
                         <div @click="editIt(notebook.id)" class="btn pull-right"><i class="fa fa-pencil"></i></div>
                     <form @submit.prevent="updateIt(notebook.id)">
                         <div class="panel-heading">
@@ -21,8 +21,8 @@
                                 <input v-show="showIt(notebook.id)" type="text" class="form-control" v-model="notebookEditData.body" />
                                 -by {{notebook.user.name}}
                         </div>
-                        <button type="submit" v-show="showIt(notebook.id)">Ok</button>
-                        <button @click.prevent="editForm=false" v-show="showIt(notebook.id)">Cancel</button>
+                        <button class="btn btn-primary" type="submit" v-show="showIt(notebook.id)">Ok</button>
+                        <button class="btn btn-default" @click.prevent="editForm=false" v-show="showIt(notebook.id)">Cancel</button>
                     </form>
 
                 </div>
@@ -35,13 +35,14 @@
 import axios from 'axios';
     export default {
         mounted() {
-            var self = this;
+            /*var self = this;
             this.loading = false;
             axios.get('notebook').then(function(response){
                     return self.notebooks = response.data; // funciona
                     this.loading = true;
 
-            });
+            });*/
+            this.fetchIt();
         },
         data() {
             return {
@@ -60,7 +61,7 @@ import axios from 'axios';
                         this.notebookEditData = notebook;
                     }
                 });
-                return this.editForm=notebookId;              
+                return this.editForm=notebookId;
             },
             showIt(notebookId) {
                 if(this.editForm == notebookId) {
@@ -83,10 +84,15 @@ import axios from 'axios';
             deleteIt(notebookId) {
                 let ok = confirm("are you sure?");
                 if(ok){
-                    axios.delete('notebook' + notebookId).then(response => {
+                    axios.delete('notebook/' + notebookId).then(response => {
                         console.log(response);
+                        this.fetchIt();
                     });
                 }
+            },
+            fetchIt(){
+                this.loading = true;
+                axios.get('notebook').then((response) => {this.notebooks = response.data; this.loading=false});
             }
         }
 

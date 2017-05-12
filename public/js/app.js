@@ -4298,12 +4298,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        var self = this;
+        /*var self = this;
         this.loading = false;
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('notebook').then(function (response) {
-            return self.notebooks = response.data; // funciona
-            this.loading = true;
-        });
+        axios.get('notebook').then(function(response){
+                return self.notebooks = response.data; // funciona
+                this.loading = true;
+         });*/
+        this.fetchIt();
     },
     data: function data() {
         return {
@@ -4346,12 +4347,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         deleteIt: function deleteIt(notebookId) {
+            var _this3 = this;
+
             var ok = confirm("are you sure?");
             if (ok) {
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('notebook' + notebookId).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('notebook/' + notebookId).then(function (response) {
                     console.log(response);
+                    _this3.fetchIt();
                 });
             }
+        },
+        fetchIt: function fetchIt() {
+            var _this4 = this;
+
+            this.loading = true;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('notebook').then(function (response) {
+                _this4.notebooks = response.data;_this4.loading = false;
+            });
         }
     }
 
@@ -17423,7 +17435,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.loading) ? _c('div', [_vm._v("Loading....")]) : _vm._e(), _vm._v(" "), _vm._l((_vm.notebooks), function(notebook) {
     return _c('div', {
       staticClass: "panel panel-default"
-    }, [_vm._m(0, true), _vm._v(" "), _c('div', {
+    }, [_c('div', {
+      staticClass: "btn pull-right",
+      on: {
+        "click": function($event) {
+          _vm.deleteIt(notebook.id)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-times"
+    })]), _vm._v(" "), _c('div', {
       staticClass: "btn pull-right",
       on: {
         "click": function($event) {
@@ -17517,6 +17538,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         value: (_vm.showIt(notebook.id)),
         expression: "showIt(notebook.id)"
       }],
+      staticClass: "btn btn-primary",
       attrs: {
         "type": "submit"
       }
@@ -17527,6 +17549,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         value: (_vm.showIt(notebook.id)),
         expression: "showIt(notebook.id)"
       }],
+      staticClass: "btn btn-default",
       on: {
         "click": function($event) {
           $event.preventDefault();
@@ -17535,13 +17558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v("Cancel")])])])
   })], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "btn pull-right"
-  }, [_c('i', {
-    staticClass: "fa fa-times"
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
