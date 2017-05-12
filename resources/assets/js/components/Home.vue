@@ -55,14 +55,12 @@ import axios from 'axios';
         },
         methods: {
             editIt(notebookId) {
-                /*this.notebooks.forEach((notebook,i) => {
+                this.notebooks.forEach((notebook,i) => {
                     if(notebook.id == notebookId) {
                         this.notebookEditData = notebook;
                     }
                 });
-                return this.editForm=notebookId;*/
-
-                    return this.editForm = notebookId;
+                return this.editForm=notebookId;              
             },
             showIt(notebookId) {
                 if(this.editForm == notebookId) {

@@ -4318,13 +4318,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         editIt: function editIt(notebookId) {
-            /*this.notebooks.forEach((notebook,i) => {
-                if(notebook.id == notebookId) {
-                    this.notebookEditData = notebook;
+            var _this = this;
+
+            this.notebooks.forEach(function (notebook, i) {
+                if (notebook.id == notebookId) {
+                    _this.notebookEditData = notebook;
                 }
             });
-            return this.editForm=notebookId;*/
-
             return this.editForm = notebookId;
         },
         showIt: function showIt(notebookId) {
@@ -4334,13 +4334,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return false;
         },
         updateIt: function updateIt(notebookId) {
-            var _this = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('notebook/' + notebookId, this.notebookEditData).then(function (response) {
                 console.log(response);
-                _this.editForm = false;
-                _this.notebookEditData = "";
-                _this.$router.push('/');
+                _this2.editForm = false;
+                _this2.notebookEditData = "";
+                _this2.$router.push('/');
             }).catch(function (error) {
                 console.log(error.response);
             });
