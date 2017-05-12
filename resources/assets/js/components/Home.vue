@@ -5,6 +5,10 @@
                         <a class="btn btn-primary">Create Notebook</a>
                 </router-link>
         </div>
+        <div class="row pull-left">
+            <img class="img-responsive" src="{!! asset('img/developer.jpg') !!}" alt="Chania">
+            <img class="circle" src="{!! asset('./img/vuejs20.jpeg') !!}" width="40px" alt="icon">
+        </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div v-if="loading">Loading....</div>
