@@ -4298,22 +4298,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        /*var self = this;
-        this.loading = false;
-        axios.get('notebook').then(function(response){
-                return self.notebooks = response.data; // funciona
-                this.loading = true;
-         });*/
         this.fetchIt();
     },
     data: function data() {
         return {
             notebooks: [],
             loading: false,
-            //editing:false,
             editForm: "",
             notebookEditData: { name: '', body: '' }
-
         };
     },
 

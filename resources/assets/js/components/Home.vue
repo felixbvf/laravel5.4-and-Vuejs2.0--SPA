@@ -35,23 +35,14 @@
 import axios from 'axios';
     export default {
         mounted() {
-            /*var self = this;
-            this.loading = false;
-            axios.get('notebook').then(function(response){
-                    return self.notebooks = response.data; // funciona
-                    this.loading = true;
-
-            });*/
             this.fetchIt();
         },
         data() {
             return {
                 notebooks:[],
                 loading:false,
-                //editing:false,
                 editForm:"",
                 notebookEditData:{name:'',body:''}
-
             }
         },
         methods: {
