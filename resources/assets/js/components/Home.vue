@@ -1,17 +1,16 @@
 <template>
-    <div class="container">
+    <div class="container">            
+
         <div class="row pull-right">
                 <router-link to="/create">
                         <a class="btn btn-primary">Create Notebook</a>
                 </router-link>
         </div>
-        <div class="row pull-left">
-            <img class="img-responsive" src="{!! asset('img/developer.jpg') !!}" alt="Chania">
-            <img class="circle" src="{!! asset('./img/vuejs20.jpeg') !!}" width="40px" alt="icon">
-        </div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div v-if="loading">Loading....</div>
+                <br />
                 <div class="panel panel-default" v-for="notebook in notebooks">
                         <div @click="deleteIt(notebook.id)" class="btn pull-right"><i class="fa fa-times"></i></div>
                         <div @click="editIt(notebook.id)" class="btn pull-right"><i class="fa fa-pencil"></i></div>

@@ -4297,7 +4297,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -17424,11 +17423,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('a', {
     staticClass: "btn btn-primary"
-  }, [_vm._v("Create Notebook")])])], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }, [_vm._v("Create Notebook")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8 col-md-offset-2"
-  }, [(_vm.loading) ? _c('div', [_vm._v("Loading....")]) : _vm._e(), _vm._v(" "), _vm._l((_vm.notebooks), function(notebook) {
+  }, [(_vm.loading) ? _c('div', [_vm._v("Loading....")]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((_vm.notebooks), function(notebook) {
     return _c('div', {
       staticClass: "panel panel-default"
     }, [_c('div', {
@@ -17554,24 +17553,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v("Cancel")])])])
   })], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row pull-left"
-  }, [_c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": "{!! asset('img/developer.jpg') !!}",
-      "alt": "Chania"
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "circle",
-    attrs: {
-      "src": "{!! asset('./img/vuejs20.jpeg') !!}",
-      "width": "40px",
-      "alt": "icon"
-    }
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

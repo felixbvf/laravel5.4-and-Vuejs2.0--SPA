@@ -20,6 +20,9 @@
     </head>
     <body>
             <div id="app">
+
+
+
                 <div class="container">
                         @include('partial.nav')
                         <div class = "jumbotron">
