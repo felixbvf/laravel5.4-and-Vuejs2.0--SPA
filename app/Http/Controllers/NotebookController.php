@@ -33,7 +33,7 @@ class NotebookController extends Controller
 
     public function show(Notebook $notebook)
     {
-        //
+
     }
 
 
@@ -54,5 +54,10 @@ class NotebookController extends Controller
     {
         $notebook->delete();
         return "deleted";
+    }
+
+    public function search($id)
+    {   $notebooks = Notebook::where('id','=',$id)->first();
+        return $notebooks;
     }
 }

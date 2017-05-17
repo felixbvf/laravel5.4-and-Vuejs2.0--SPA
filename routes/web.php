@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('notebook', 'NotebookController');
+Route::get('get_notebook/{id}', array('as'=>'get_notebook', 'uses'=>'NotebookController@search'));

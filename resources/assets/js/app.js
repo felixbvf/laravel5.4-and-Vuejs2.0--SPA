@@ -22,6 +22,7 @@ Vue.use(VueRouter);
 /*Vue.component('inbox', require('./components/Inbox.vue'));
 Vue.component('solicitude', require('./components/Solicitude.vue'));
 Vue.component('create', require('./components/Form.vue'));*/
+Vue.component('search', require('./components/Buscar.vue'));
 
 const app = new Vue({
     el: '#app',

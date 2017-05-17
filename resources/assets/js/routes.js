@@ -15,6 +15,10 @@ let routes=[
     {
         path:'/create',
         component:require('./components/Form')
+    },
+    {
+        path:'/search1',
+        component:require('./components/Buscar')
     }
 ];
 
